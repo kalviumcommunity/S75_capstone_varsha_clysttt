@@ -1,0 +1,70 @@
+function Footer() {
+  return (
+    <footer style={styles.footer}>
+      <div style={styles.container}>
+
+        <div>
+          <h3>CLYST</h3>
+          <p style={styles.text}>
+            Helping 12th grade students find the perfect college in Tamil Nadu for their future.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <p>Home</p>
+          <p>Colleges</p>
+          <p>About Us</p>
+        </div>
+
+        <div>
+          <h4>Categories</h4>
+          <p>Engineering</p>
+          <p>Medical</p>
+          <p>Arts & Science</p>
+          <p>Management</p>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p>Have questions? Reach out to us.</p>
+          <p>Email: info@clyst.edu</p>
+        </div>
+
+      </div>
+
+      <div style={styles.bottom}>
+        © 2025 CLYST. All rights reserved.
+      </div>
+    </footer>
+  );
+}
+
+const styles = {
+  footer: {
+    marginTop: "60px",
+    padding: "40px 60px",
+    backgroundColor: "#f9fafb",
+    borderTop: "1px solid #e5e7eb",
+    color: "#111827"   // ✅ CORRECT PLACE
+  },
+  container: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "40px"
+  },
+  text: {
+    maxWidth: "250px",
+    fontSize: "14px"
+  },
+  bottom: {
+    marginTop: "30px",
+    textAlign: "center",
+    fontSize: "14px",
+    color: "#6b7280"
+  }
+};
+
+
+
+export default Footer;
