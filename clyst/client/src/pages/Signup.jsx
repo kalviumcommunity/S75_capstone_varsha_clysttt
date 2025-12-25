@@ -19,7 +19,10 @@ function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
+
+
+  // Updated: actually send signup request to backend
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.password) {
@@ -34,10 +37,24 @@ function Signup() {
 
     setError("");
 
-    // 🔐 Later: send data to backend
-    console.log("Signup data:", form);
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    navigate("/login");
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Signup failed");
+        return;
+      }
+
+      navigate("/login");
+    } catch (err) {
+      setError("Server error. Please try again.");
+    }
   };
 
   return (

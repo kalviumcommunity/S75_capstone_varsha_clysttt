@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../utils/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function Login() {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({
@@ -18,7 +20,7 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.email || !form.password) {
@@ -26,22 +28,35 @@ function Login() {
       return;
     }
 
-    if (form.password.length < 6) {
-      setError("Invalid credentials");
-      return;
-    }
-
     setError("");
+    setLoading(true);
 
-    // 🔐 Later: backend authentication + JWT
-    console.log("Login data:", form);
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(form)
+      });
 
-    // After successful login
-   
-// inside handleSubmit (before navigate)
-loginUser();
-navigate("/");
+      const data = await res.json();
 
+      if (!res.ok) {
+        setError(data.message || "Login failed");
+        return;
+      }
+
+      // ✅ STORE JWT USING AUTH UTILS
+      loginUser(data.token);
+
+      // ✅ REDIRECT
+      navigate("/");
+    } catch (err) {
+      setError("Server error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -69,8 +84,8 @@ navigate("/");
           style={styles.input}
         />
 
-        <button type="submit" style={styles.button}>
-          Login
+        <button type="submit" style={styles.button} disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
       </form>
 
