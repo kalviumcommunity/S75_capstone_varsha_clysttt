@@ -5,11 +5,6 @@ function Navbar() {
   const navigate = useNavigate();
   const loggedIn = isAuthenticated();
 
-  const handleLogout = () => {
-    logoutUser();
-    navigate("/login");
-  };
-
   return (
     <nav style={styles.nav}>
       <div style={styles.logo}>CLYST</div>
@@ -21,10 +16,14 @@ function Navbar() {
       </div>
 
       <div style={styles.actions}>
-        <Link to="/colleges" style={styles.findBtn}>Find Colleges</Link>
-
         {loggedIn ? (
-          <button onClick={handleLogout} style={styles.logoutBtn}>
+          <button
+            style={styles.logoutBtn}
+            onClick={() => {
+              logoutUser();
+              navigate("/login");
+            }}
+          >
             Logout
           </button>
         ) : (
@@ -41,11 +40,11 @@ function Navbar() {
 const styles = {
   nav: {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "space-between",
-    alignItems: "center",
-    padding: "16px 40px",
-    borderBottom: "1px solid #e5e7eb",
-    backgroundColor: "white"
+    gap: "12px",
+    padding: "16px",
+    borderBottom: "1px solid #e5e7eb"
   },
   logo: {
     fontWeight: "bold",
@@ -53,40 +52,33 @@ const styles = {
   },
   links: {
     display: "flex",
-    gap: "20px"
+    gap: "16px",
+    flexWrap: "wrap"
   },
   link: {
     textDecoration: "none",
     color: "#111827",
-    fontWeight: "500"
+    padding: "6px"
   },
   actions: {
     display: "flex",
-    gap: "15px",
+    gap: "10px",
     alignItems: "center"
   },
-  findBtn: {
-    textDecoration: "none",
-    padding: "8px 14px",
-    border: "1px solid #2563eb",
-    borderRadius: "6px",
-    color: "#2563eb"
-  },
   signupBtn: {
-    textDecoration: "none",
     padding: "8px 14px",
     background: "#2563eb",
     color: "white",
-    borderRadius: "6px"
+    borderRadius: "8px",
+    textDecoration: "none"
   },
   logoutBtn: {
     padding: "8px 14px",
     background: "#ef4444",
     color: "white",
     border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontWeight: "500"
+    borderRadius: "8px",
+    cursor: "pointer"
   }
 };
 
