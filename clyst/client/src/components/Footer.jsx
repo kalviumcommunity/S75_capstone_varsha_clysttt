@@ -31,6 +31,19 @@ function Footer() {
           <p>Email: info@clyst.edu</p>
         </div>
 
+        <div>
+          <h4>Contribution</h4>
+          <p>Contribute to the developer for more such products.</p>
+          <a
+            href="https://buymeacoffee.com/varshakannan"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.contributionBtn}
+          >
+            Donate
+          </a>
+        </div>
+
       </div>
 
       <div style={styles.bottom}>
@@ -50,7 +63,7 @@ const styles = {
   },
   container: {
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
+    gridTemplateColumns: "repeat(5, 1fr)",
     gap: "40px"
   },
   text: {
@@ -62,6 +75,17 @@ const styles = {
     textAlign: "center",
     fontSize: "14px",
     color: "#6b7280"
+  }
+  ,
+  contributionBtn: {
+    display: "inline-block",
+    marginTop: "12px",
+    padding: "8px 14px",
+    backgroundColor: "#0ea5e9",
+    color: "#ffffff",
+    borderRadius: "8px",
+    textDecoration: "none",
+    fontWeight: 600
   }
 };
 
