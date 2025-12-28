@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Auth.css";
 
 function Signup() {
   const navigate = useNavigate();
@@ -44,24 +45,32 @@ function Signup() {
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch (err) {
+        const text = await res.text();
+        data = { message: text || `HTTP ${res.status}` };
+      }
 
       if (!res.ok) {
-        setError(data.message || "Signup failed");
+        console.error("Signup failed", res.status, data);
+        setError(data.message || `Signup failed (status ${res.status})`);
         return;
       }
 
       navigate("/login");
     } catch (err) {
+      console.error("Signup error", err);
       setError("Server error. Please try again.");
     }
   };
 
   return (
-    <div style={styles.container}>
+    <div className="auth-container">
       <h2>Create Account</h2>
 
-      {error && <p style={styles.error}>{error}</p>}
+      {error && <p className="auth-error">{error}</p>}
 
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
@@ -69,7 +78,7 @@ function Signup() {
           placeholder="Full Name"
           value={form.name}
           onChange={handleChange}
-          style={styles.input}
+          className="auth-input"
         />
 
         <input
@@ -78,7 +87,7 @@ function Signup() {
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          style={styles.input}
+          className="auth-input"
         />
 
         <input
@@ -87,17 +96,17 @@ function Signup() {
           placeholder="Password"
           value={form.password}
           onChange={handleChange}
-          style={styles.input}
+          className="auth-input"
         />
 
-        <button type="submit" style={styles.button}>
+        <button type="submit" className="auth-button">
           Sign Up
         </button>
       </form>
 
-      <p style={styles.switch}>
+      <p className="auth-switch">
         Already have an account?{" "}
-        <span onClick={() => navigate("/login")} style={styles.link}>
+        <span onClick={() => navigate("/login")} className="auth-link">
           Login
         </span>
       </p>

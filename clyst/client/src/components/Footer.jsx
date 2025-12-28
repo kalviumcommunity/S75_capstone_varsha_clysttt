@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer style={styles.footer}>
@@ -12,9 +14,9 @@ function Footer() {
 
         <div>
           <h4>Quick Links</h4>
-          <p>Home</p>
-          <p>Colleges</p>
-          <p>About Us</p>
+          <Link to="/" style={styles.link}>Home</Link>
+          <Link to="/colleges" style={styles.link}>Colleges</Link>
+          <Link to="/about" style={styles.link}>About Us</Link>
         </div>
 
         <div>
@@ -86,6 +88,14 @@ const styles = {
     borderRadius: "8px",
     textDecoration: "none",
     fontWeight: 600
+  }
+  ,
+  link: {
+    display: "block",
+    marginTop: "8px",
+    color: "#0f1724",
+    textDecoration: "none",
+    fontWeight: 500
   }
 };
 
