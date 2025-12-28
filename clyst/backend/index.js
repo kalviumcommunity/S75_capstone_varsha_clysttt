@@ -5,11 +5,24 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/auth.routes");
 const authMiddleware = require("./middleware/authMiddleware");
+const rateLimit = require("express-rate-limit");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Rate limiter for sensitive endpoints (login, etc.)
+const apiLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 5, // limit each IP to 5 requests per windowMs
+  message: { message: "Too many requests, please try again later." },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Apply rate limiter to login endpoint
+app.use('/api/auth/login', apiLimiter);
 
 // ROUTES
 app.use("/api/auth", authRoutes);
