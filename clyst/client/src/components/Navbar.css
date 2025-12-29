@@ -1,0 +1,148 @@
+/* Desktop layout */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  gap: 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(15,23,42,0.04);
+  border-bottom: 1px solid rgba(15,23,42,0.04);
+  position: relative;
+  z-index: 10;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logoImg {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+.logoText {
+  font-weight: 700;
+  font-size: 18px;
+  color: #0f1724;
+}
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.link {
+  text-decoration: none;
+  color: #0f1724;
+  padding: 6px 8px;
+  font-weight: 500;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.signupBtn {
+  padding: 8px 14px;
+  background: #0f7fcf;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 8px 26px rgba(15,127,207,0.12);
+}
+.logoutBtn {
+  padding: 8px 14px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(239,68,68,0.12);
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #0f1724;
+  border-radius: 3px;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile menu (hidden by default) */
+.mobile-menu {
+  display: none;
+}
+.mobile-menu.open {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  background: #ffffff;
+  padding: 12px 18px 18px;
+  box-shadow: 0 12px 40px rgba(2,6,23,0.06);
+  border-bottom: 1px solid rgba(15,23,42,0.04);
+}
+.mobile-link {
+  padding: 12px 8px;
+  color: #0f1724;
+  text-decoration: none;
+  font-weight: 500;
+}
+.mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+.mobile-logout {
+  padding: 10px 12px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.mobile-signup {
+  padding: 10px 12px;
+  background: #0f7fcf;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Responsive rules */
+@media (max-width: 768px) {
+  .nav-links,
+  .actions {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
