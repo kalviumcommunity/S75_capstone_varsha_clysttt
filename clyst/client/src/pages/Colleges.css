@@ -1,0 +1,784 @@
+/* Colleges page styles matching Home.css theme */
+
+:root {
+  --primary-600: #0f7fcf;
+  --primary-700: #0b5f9a;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+.colleges-page {
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+/* Prevent accidental horizontal overflow on small screens */
+.colleges-page {
+  overflow-x: hidden;
+}
+
+.colleges-hero {
+  background: linear-gradient(90deg, var(--primary-600) 0%, var(--primary-700) 100%);
+  padding: 60px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.colleges-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.colleges-hero h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  margin: 0 0 12px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.colleges-hero p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.colleges-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  position: relative;
+}
+
+/* Mobile Filter Toggle Button */
+.mobile-filter-toggle {
+  display: none;
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 100;
+  background: var(--primary-600);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(15, 127, 207, 0.3);
+  transition: background 0.2s ease;
+}
+
+.mobile-filter-toggle:hover {
+  background: var(--primary-700);
+}
+
+/* Sidebar Filters */
+.filters-sidebar {
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-600) #e5e7eb;
+}
+
+.filters-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filters-sidebar::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 3px;
+}
+
+.filters-sidebar::-webkit-scrollbar-thumb {
+  background: var(--primary-600);
+  border-radius: 3px;
+}
+
+.filters-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-700);
+}
+
+.filter-section {
+  margin-bottom: 24px;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.filter-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1f2937;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-group.course-filter {
+  gap: 8px;
+}
+
+.filter-group.states-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-600) #f0f0f0;
+}
+
+.filter-group.states-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.filter-group.states-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.filter-group.states-list::-webkit-scrollbar-thumb {
+  background: var(--primary-600);
+  border-radius: 2px;
+}
+
+.search-section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.search-input {
+  width: 100% !important;
+  padding: 12px 14px !important;
+  border: 1.5px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+.search-input:focus {
+  outline: none !important;
+  border-color: var(--primary-600) !important;
+  box-shadow: 0 0 0 3px rgba(15, 127, 207, 0.1) !important;
+}
+
+/* Mobile search container (hidden on desktop) */
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-search-input {
+  padding: 10px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  width: auto;
+  flex: 1 1 auto;
+  min-width: 0; /* allow shrinking in flex containers */
+}
+
+.search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(15,127,207,0.2);
+}
+
+.search-btn:hover {
+  filter: brightness(0.98);
+}
+
+.course-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: var(--card-bg);
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.course-btn:hover {
+  border-color: var(--primary-600);
+  background: #eef6ff;
+}
+
+.course-btn.active {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  color: #fff;
+  border-color: var(--primary-700);
+}
+
+.course-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.course-label {
+  flex: 1;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-item input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-600);
+  flex-shrink: 0;
+}
+
+.filter-item label {
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  flex: 1;
+}
+
+.reset-filters {
+  background: transparent;
+  border: 1.5px solid #d1d5db;
+  color: #374151;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.reset-filters:hover {
+  border-color: var(--primary-600);
+  color: var(--primary-600);
+  background: #eef6ff;
+}
+
+/* Main Content */
+.colleges-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.results-count {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.sort-control {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sort-control label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.sort-control select {
+  padding: 8px 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  background: var(--card-bg);
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.sort-control select:focus {
+  outline: none;
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 3px rgba(15, 127, 207, 0.1);
+}
+
+/* Colleges Grid */
+.colleges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.college-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.college-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.card-header {
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.college-rank {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  min-width: 45px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.card-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.college-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 6px;
+  word-break: break-word;
+}
+
+.college-city {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-body {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.college-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.meta-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.meta-value {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.meta-value.state {
+  background: #eef6ff;
+  color: var(--primary-700);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.card-footer {
+  padding: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.view-details-btn {
+  flex: 1;
+  background: var(--primary-600);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.view-details-btn:hover {
+  background: var(--primary-700);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 24px 16px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.pagination-btn {
+  padding: 8px 14px;
+  border: 1.5px solid #d1d5db;
+  background: var(--card-bg);
+  color: #374151;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: var(--primary-600);
+  background: #eef6ff;
+  color: var(--primary-600);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-numbers {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.pagination-number {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid #d1d5db;
+  background: var(--card-bg);
+  color: #374151;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-number:hover {
+  border-color: var(--primary-600);
+  color: var(--primary-600);
+}
+
+.pagination-number.active {
+  background: var(--primary-600);
+  color: #fff;
+  border-color: var(--primary-600);
+}
+
+.pagination-dots {
+  color: var(--muted);
+  padding: 0 4px;
+  font-weight: 500;
+}
+
+/* Loading State */
+.loading-container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(15, 127, 207, 0.1);
+  border-top-color: var(--primary-600);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+}
+
+.empty-state h2 {
+  font-size: 20px;
+  color: #1f2937;
+  margin: 0 0 8px;
+}
+
+.empty-state p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .colleges-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 16px;
+  }
+
+  .mobile-filter-toggle {
+    display: none;
+  }
+
+  /* Show mobile search in header */
+  .header-search-input {
+    width: calc(100% - 120px);
+    max-width: none;
+  }
+
+  /* Header filter button next to search */
+  .header-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #374151;
+    cursor: pointer;
+  }
+
+  .header-filter-btn svg {
+    color: var(--primary-600);
+  }
+
+  /* Make original sidebar search still available inside sidebar */
+  .search-input {
+    width: 100% !important;
+  }
+
+  .filters-sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    z-index: 99;
+    border-radius: 0;
+    max-height: 100%;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .filters-sidebar.open {
+    left: 0;
+  }
+
+  .colleges-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .colleges-hero h1 {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagination-numbers {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .colleges-container {
+    padding: 16px 12px;
+  }
+
+  .college-card {
+    margin: 0;
+  }
+
+  .colleges-grid {
+    gap: 16px;
+  }
+
+  .pagination-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .pagination-number {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}
+
+/* Hide header search & header filter controls on larger (laptop/desktop) screens
+   Mobile behavior remains unchanged (existing mobile media rules take precedence). */
+@media (min-width: 769px) {
+  .header-search {
+    display: none;
+  }
+}
+
+/* Desktop search: shown on laptop/desktop only (mobile keeps header-search) */
+/* desktop search hidden by default (so mobile shows only the header search) */
+.desktop-search {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .desktop-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .desktop-search-input {
+    padding: 8px 10px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 360px;
+    max-width: 50vw;
+  }
+
+  /* allow desktop search input to shrink on narrow viewports inside flex parents */
+  .desktop-search-input {
+    min-width: 0;
+  }
+
+  /* Reduce size of results count on larger screens and align sort beside it */
+  .results-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ensure results-meta doesn't force horizontal scroll on mobile */
+  .results-meta {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .results-count {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+}
+
+/* Mobile: ensure results-count appears below the (mobile) search bar */
+@media (max-width: 768px) {
+  .desktop-search {
+    display: none;
+  }
+
+  .results-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .results-count {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
