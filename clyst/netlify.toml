@@ -1,0 +1,7 @@
+[build]
+  base = "clyst/client"
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  VITE_API_URL = "https://s75-capstone-varsha-clysttt.onrender.com"
