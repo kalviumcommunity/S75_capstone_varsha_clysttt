@@ -1,7 +1,6 @@
 [build]
-  base = "clyst/client"
-  publish = "dist"
-  command = "npm run build"
+  publish = "clyst/client/dist"
+  command = "npm run --prefix clyst/client build"
 
 [build.environment]
-  VITE_API_URL = "https://s75-capstone-varsha-clysttt.onrender.com"
+  VITE_API_URL = "https://s75-capstone-varsha_clysttt.onrender.com"
