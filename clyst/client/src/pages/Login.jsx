@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../utils/auth";
 import "./Auth.css";
 
+const API_BASE = import.meta.env.VITE_BACKEND_URL || import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function Login() {
   const navigate = useNavigate();
 
@@ -33,7 +35,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

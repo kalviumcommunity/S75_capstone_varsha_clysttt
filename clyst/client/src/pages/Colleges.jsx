@@ -2,6 +2,8 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Colleges.css";
 
+const API_BASE = import.meta.env.VITE_BACKEND_URL || import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const COURSE_OPTIONS = [
   { id: 'college', label: 'All Colleges', icon: '🏫' },
   { id: 'engineering', label: 'Engineering', icon: '⚙️' },
@@ -59,7 +61,7 @@ function Colleges() {
           queryParams.append("limit", 200);
 
           const response = await fetch(
-            `http://localhost:5000/api/colleges?${queryParams.toString()}`,
+            `${API_BASE}/api/colleges?${queryParams.toString()}`,
             { timeout: 5000 }
           );
 
