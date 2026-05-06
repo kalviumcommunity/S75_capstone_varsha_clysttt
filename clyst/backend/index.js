@@ -9,7 +9,18 @@ const rateLimit = require("express-rate-limit");
 
 const app = express();
 
-app.use(cors());
+// CORS configuration
+app.use(cors({
+  origin: [
+    "https://clystt.netlify.app",
+    "http://localhost:5173", // for local development
+    "http://localhost:3000"  // alternative local development port
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
 
 // Rate limiter for sensitive endpoints (login, etc.)
